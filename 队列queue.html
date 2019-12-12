@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>队列queue - fifo</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //基于数组实现
+        Queue.prototype.enqueue = function(element){
+            this.items.push(element);
+        }
+        Queue.prototype.dequeue = function(){//列表其他元素前移，元素越多性能越差
+            return this.items.shift()
+        }
+        Queue.prototype.front = function(){
+            return this.items[0]
+        }
+        Queue.prototype.isEmpty = function(){
+            return this.items.length == 0
+        }
+        Queue.prototype.count = function(){
+            return this.items.length
+        }
+        Queue.prototype.toString = function(){
+            return this.items.join(' ')
+        }
+        function Queue(){
+            this.items = [];
+        }
+    
+        //基于链表实现
+
+        //算法题：击鼓传花（1.重新数  2.接着数）
+        //循环法(实现的是下次数数始终从第一个开始)
+        var arr1 = [1,2,3,4,5];
+        var arr2 = [1,2,3,4,5];
+        function jgch(arr, n){
+            while (arr.length > 1) {
+                arr.splice((n % arr.length) - 1,1)
+                console.log(arr);
+            }
+            return arr[0];
+        }
+        // var a = jgch(arr1,6);
+
+        //队列法（实现的是下次数数从删除数的下一个）
+        function jgchQueue(arr, n){
+            let que = new Queue();
+            //加入队列
+            for (let i = 0; i < arr.length; i++) {
+                que.enqueue(arr[i]);  
+            }
+            console.log(que.items);
+            //开始数
+            while(que.count() > 1){
+                for (let i = 0; i < n - 1; i++) {
+                    que.enqueue(que.dequeue());
+                }
+                que.dequeue();
+                console.log(que.items);
+            }
+            return que.front()
+        }
+        var b = jgchQueue(arr1,3)
+
+
+
+        //优先级队列
+    </script>
+</body>
+</html>

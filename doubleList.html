@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var a = 123
+        var aa = {
+            ss : 12,
+            ff :33
+        }
+        function Baa(name){
+            this.name = name;
+            this.age = 12;
+            this.show = function(){
+                console.log('show');
+            }
+            Baa.prototype.mySay2 = function(){
+                console.log(this.name)
+            };
+            
+        }
+        Baa.prototype = aa;
+        var bb = new Baa('Lee') 
+        bb.mySay2()
+    </script>
+
+</body>
+</html>

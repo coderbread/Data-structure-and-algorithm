@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //尾部添加节点
+        SingleList.prototype.push = function(data){
+            //创建新节点
+            var newNode = new Node(data);
+
+            //找到最后一个节点，并把节点赋到next上，
+            if(this.length == 0){
+                this.head = newNode;
+            }else{
+                var tempNode = this.head;
+                while(tempNode.next){
+                    tempNode = tempNode.next;
+                }
+                tempNode.next = newNode;
+            }
+            this.length++;
+        }
+
+        //toString()方法
+        SingleList.prototype.toString = function(){
+            var tempNode = this.head;
+            var tempList = '';
+            while(tempNode){
+                tempList += tempNode + ' ';
+                tempNode = tempNode.next;
+            }
+            return templist.trim()
+        }
+
+        //链表类
+        function SingleList(){
+            //节点类
+            function Node(data){//类似于 this.Node = function(){}
+                this.data = data;//节点上的数据
+                this.next = null;//节点之间的连接
+            }
+
+            //属性类
+            this.head = null;//指向第一个节点
+            this.length = 0;//初始化节点数
+        }
+        var list = new SingleList()
+        list.push('abc')
+        list.push([1,2,3])
+        console.log(list)
+    </script>
+</body>
+</html>
