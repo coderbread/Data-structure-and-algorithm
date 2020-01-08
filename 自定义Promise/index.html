@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/Promise-ES5.js"></script>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // resolve('成功！！！')
+      reject('失败了！！')
+    },100)
+  })
+  p.then(
+    value => {
+      console.log(value)
+    },
+    reason => {console.log(reason)}
+  )
+  p.then(
+    value => {console.log(value)},
+    reason => {console.log(reason)}
+  )
+</script>
